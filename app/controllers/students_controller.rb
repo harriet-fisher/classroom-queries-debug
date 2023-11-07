@@ -8,6 +8,8 @@ class StudentsController < ApplicationController
   def show
     the_id = params.fetch("path_id")
     @student = Student.where({:id => the_id }).at(0)
+    @courses = Course.joins(:enrollments).where(enrollments: { student_id: @student.id })
+
 
     render({ :template => "students/show" })
   end

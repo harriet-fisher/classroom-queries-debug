@@ -16,7 +16,7 @@
 
 <hr>
 
-<form action="/modify_department/<%= @department.id %>" method="post">
+<form action="/departments/<%= @department.id %>" method="post">
   <div>
     <label for="name_box">
       Name
@@ -52,7 +52,7 @@
 <hr>
 
 <h2>Courses</h2>
-<% courses = Course.where({ :department_id => @department.name }) %>
+<% courses = Course.where(:department_id => @department.id) %>
 <ul>
   <% courses.each do |course| %>
     <li>
